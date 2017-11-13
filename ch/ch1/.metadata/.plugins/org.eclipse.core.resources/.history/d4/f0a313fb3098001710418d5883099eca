@@ -1,0 +1,23 @@
+// The DecDate class
+// Do not make changes to anything other than the body of decrement() method
+// Your name here
+
+public class DecDate extends Date
+{
+    // copy constructor
+    public DecDate(Date o)
+    {
+        super(o.m_month, o.m_day, o.m_year);
+    }
+    
+    // constructor
+    public DecDate(int month, int day, int year)
+    {
+        super(month, day, year);
+    }
+    
+    public void decrement()
+    {
+        m_day = super.getDay()-1;
+    }  
+}

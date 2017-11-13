@@ -1,0 +1,38 @@
+// The DecDate class
+// Do not make changes to anything other than the body of decrement() method
+// Your name here
+
+public class DecDate extends Date
+{
+    // copy constructor
+    public DecDate(Date o)
+    {
+        super(o.m_month, o.m_day, o.m_year);
+    }
+    
+    // constructor
+    public DecDate(int month, int day, int year)
+    {
+        super(month, day, year);
+    }
+    
+    public void decrement()
+    {
+        int newDay = super.getDay()-1; 
+        int currentMonth = super.getMonth();
+        
+        
+        //Check for leap year.
+        boolean leap = true; //initialize the leap value
+        int currentYear = super.getYear(); // get the current year
+        boolean a = (currentYear % 4 == 0) && (currentYear % 100 == 0) && (currentYear % 400 == 0);
+        boolean b = (currentYear % 4 == 0) && (currentYear % 100 != 0) && (currentYear % 400 == 0);
+        boolean c = (currentYear % 4 == 0) && (currentYear % 100 != 0) && (currentYear % 400 != 0);
+        if(a || b || c) {
+        	 leap = true;
+        }
+        else {
+        	leap = false;
+        }
+    }  
+}

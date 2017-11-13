@@ -1,0 +1,82 @@
+// The DecDate class
+// Do not make changes to anything other than the body of decrement() method
+// Your name here
+
+public class DecDate extends Date
+{
+    // copy constructor
+    public DecDate(Date o)
+    {
+        super(o.m_month, o.m_day, o.m_year);
+    }
+    
+    // constructor
+    public DecDate(int month, int day, int year)
+    {
+        super(month, day, year);
+    }
+    
+    public void decrement()
+    {
+        int curentDay = super.getDay(); 			// get current Day
+        int currentMonth = super.getMonth();		//get current Month
+        int currentYear = super.getYear(); 		// get the current year
+        int newDay = curentDay -1; 				// calculate the new day
+        int newMonth = currentMonth; 			// assume new month is the same as current month
+        int newYear = currentYear; 				//assume new month is the same as current month
+       
+        //Check for leap year.
+        boolean leap = (currentYear % 4 == 0) && (currentYear % 100 != 0) || (currentYear % 400 == 0); // is the year divisible by 4 but not 100, or by 400
+        
+        
+        if(newDay == 0) {
+	        	switch(currentMonth) {
+                    case 1: newDay = 31;
+                            newMonth = 12;
+                            newYear = currentYear - 1;
+                            break;
+                    case 2: newDay = 31;
+                    newMonth = 1;
+                            break;
+                    case 3: if(leap) {
+                            newDay = 29;
+                            newMonth = 2;
+                            break;
+                            }
+                        newDay = 28;
+                        newMonth = 2;
+                        break;
+                    case 4: newDay = 31;
+                    newMonth = 3;
+                            break;
+                    case 5: newDay = 30;
+                    newMonth = 4;
+                            break;
+                    case 6: newDay = 31;
+                    newMonth = 5;
+                            break;
+                    case 7: newDay = 30;
+                    newMonth = 6;
+                            break;
+                    case 8: newDay = 31;
+                    newMonth = 7;
+                            break;
+                    case 9: newDay = 31;
+                    newMonth = 8;
+                            break;
+                    case 10: newDay = 30;
+                    newMonth = 9;
+                            break;
+                    case 11: newDay = 31;
+                    newMonth = 10;
+                            break;
+                    case 12: newDay = 30;
+                    newMonth = 11;
+                            break;
+	            }
+        }
+        m_day = newDay;
+        m_month = newMonth;
+        m_year = newYear;
+    }  
+}
