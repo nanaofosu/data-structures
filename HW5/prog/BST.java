@@ -84,20 +84,24 @@ public class BST
     // print the tree content using in-order traversal
     public void inOrder()
     {
-        /*create a current and parent node*/
-        BSTNode current, parent;
+        /*create current and parent node*/
+        BSTNode current;
+        BSTNode parent;
         String output = "";
 
+        /*If the root is null, then there is nothing in the tree. return nothing*/
         if(m_root == null){
             return;
         }
 
+        // set current to be the root
         current = m_root;
+        /* We will be looping untill we get to a null position*/
         while(current != null){
-            // check if the left is null
+            // check if the left is null. If it is, then we have rached the last left node
             if(current.getLeft() == null){
-                output += current.getInfo() + " "; // append to output.
-                //set current to the right
+                output += current.getInfo() + " "; // append value to output.
+                //set current to the right node
                 current = current.getRight();
             }
             else{
@@ -114,15 +118,13 @@ public class BST
                     current = current.getLeft();
                 }
 
-                 /* Revert the changes made in if part to restore the
-                    original tree i.e.,fix the right child of predecssor*/
+                 /* fix the right child of predecssor*/
                  else
                  {
                     parent.setRight(null);
-                    // System.out.print(current.data + " ");
                     output +=current.getInfo() + " ";
                     current = current.getRight();
-                }   /* End of if condition pre->right == NULL */
+                }   /* End of if condition */
 
             }
         }
